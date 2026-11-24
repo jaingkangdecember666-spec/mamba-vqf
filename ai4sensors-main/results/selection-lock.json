@@ -1,0 +1,3042 @@
+{
+  "locked_at": "2026-11-24T05:35:54.414780+08:00",
+  "campaign_window": {
+    "start": "2026-11-23T22:56:31+08:00",
+    "end": "2026-11-24T06:56:31+08:00",
+    "timezone": "Asia/Shanghai",
+    "worker_chat": "01a20361-ff3b-77c0-90c4-adf20bfd7be2",
+    "sequences": "One record one tilt RMSE, then equal record macro. Compare identical native scoring indices, one global model plus fixed default full 6D VQF. A tie is not a win.",
+    "datasets": [
+      "SHICE",
+      "BROAD",
+      "Sassari",
+      "TUM-VI",
+      "IMU-Array",
+      "OxIOD",
+      "RepoIMU",
+      "YT_Server"
+    ],
+    "training_scope": "External datasets only. No SHICE fitting, normalization or calibration. Use R1–R4 for development, archive prior R5/R6 exposure. All currently hidden partitions sealed until a final lock. Quantify source-fitted versus reserved evaluation separately.",
+    "coordination": "Original chat executes one named small batch per decision. Coordinator reproduces and reviews evidence, then decides the next change. Same checkpoint/policy for every dataset, no dataset-ID or label-based routing.",
+    "ranking": "Prefer more development datasets with lower paired macro RMSE, then minimize largest relative regression, then compare mean relative change; missing datasets or unsupported reference cannot count as wins. Final claims require complete stated scope, with individual wins/losses and neutral/inconclusive labelled.",
+    "incumbent": "transfer-mamba-20261123/batch6/mamba-intrinsic-selected.pt",
+    "incumbent_sha256": "42cd98956346659f117ef79f474f16fc647c9eae3b28237421c1ea77091be34b"
+  },
+  "selection_basis": "Only the 213-record common development panel. More strictly improving domains first, then lower worst candidate/default domain-mean ratio, then lower mean ratio. Record counts for missing policies shown separately. A physical ablation has neither weights nor components.",
+  "inventory_sha256": "24ea431a95b94eeb931b39718e07004d65a98a8d94ecd12d1d77c63fd39e0539",
+  "selected": {
+    "batch": "C038",
+    "column": "C038_deg",
+    "label": "取 C023 与 C035 的 50 个历史响应权重的逐元素中点，保留共同的归一化和物理前端",
+    "signature": "06e256ac92ba4a5bf603f83f49c458b71c40b49a39ffdc848bc4116981f3cd5c",
+    "weights": "C038/router.pt",
+    "components": [
+      {
+        "batch": "C020",
+        "column": "C020_deg",
+        "fraction": 1.0
+      }
+    ],
+    "paired_record_count": 213,
+    "domains": {
+      "BROAD": {
+        "baseline_deg": 0.6454667062866787,
+        "candidate_deg": 0.6162507851770328,
+        "ratio": 0.9547367496648698,
+        "records": 12,
+        "improving_records": 5
+      },
+      "Sassari": {
+        "baseline_deg": 1.5345850062058026,
+        "candidate_deg": 1.4552716581658167,
+        "ratio": 0.9483160934589835,
+        "records": 6,
+        "improving_records": 5
+      },
+      "SHICE": {
+        "baseline_deg": 2.4203962119869886,
+        "candidate_deg": 2.2735927251231995,
+        "ratio": 0.9393473324174173,
+        "records": 37,
+        "improving_records": 37
+      },
+      "TUM-VI": {
+        "baseline_deg": 1.5060683294827482,
+        "candidate_deg": 1.4842380770053074,
+        "ratio": 0.9855051380803298,
+        "records": 2,
+        "improving_records": 2
+      },
+      "YT_Server": {
+        "baseline_deg": 2.0033671611425454,
+        "candidate_deg": 1.9717098469325336,
+        "ratio": 0.9841979469245381,
+        "records": 12,
+        "improving_records": 11
+      },
+      "IMU-Array": {
+        "baseline_deg": 1.143740490831864,
+        "candidate_deg": 1.0740689641381957,
+        "ratio": 0.9390844975305588,
+        "records": 16,
+        "improving_records": 12
+      },
+      "OxIOD": {
+        "baseline_deg": 3.8058568476542587,
+        "candidate_deg": 3.7055485693730708,
+        "ratio": 0.9736437069767843,
+        "records": 66,
+        "improving_records": 66
+      },
+      "RepoIMU": {
+        "baseline_deg": 9.306807380860073,
+        "candidate_deg": 9.206012638106193,
+        "ratio": 0.9891697830814496,
+        "records": 62,
+        "improving_records": 48
+      }
+    },
+    "winning_domains": 8,
+    "worst_domain": "RepoIMU",
+    "worst_domain_ratio": 0.9891697830814496,
+    "mean_domain_ratio": 0.9642501560168664
+  },
+  "development_through": "C038",
+  "candidate_ranking_sha256": "57e1ace875244de1f341ed1b9ba993bf04dd50d5b062c8c3820898377b69c496",
+  "review_inference": {
+    "front_end": "causal_sphere",
+    "heads": [
+      {
+        "name": "C003_debiased_b6_gain_025",
+        "weights": "../transfer-mamba-20261123/batch6/mamba-intrinsic-selected.pt",
+        "sha256": "42cd98956346659f117ef79f474f16fc647c9eae3b28237421c1ea77091be34b",
+        "gain": 0.25,
+        "gate": "always",
+        "kind": "mamba_v1",
+        "fraction": 0.5
+      },
+      {
+        "name": "C013_seed_C006",
+        "weights": "C013/seed-C006-readout.pt",
+        "sha256": "3f4f8bf55a63ead1b2fd93977169a3d4d54567ab8cdafd3dfd628f3e7c674519",
+        "gain": 0.25,
+        "gate": "rest_off",
+        "kind": "mamba_v1",
+        "fraction": 0.5
+      }
+    ],
+    "additions": [
+      {
+        "name": "C020_C020",
+        "weights": "C020/mamba-end-to-end.pt",
+        "sha256": "17ec7d6645ae59538ed1c8e9bd4cddc8028a79507b0fb3f68ca1485d3cd9e518",
+        "gain": 0.125,
+        "gate": "rest_off",
+        "kind": "trained_mamba_temporal_readout"
+      }
+    ],
+    "window_blocks": 64,
+    "block_seconds": 0.01,
+    "release_seconds": 0.1,
+    "vertical_in_estimator_frame": [
+      0,
+      0,
+      1
+    ],
+    "stable_force": {
+      "tau_s": 0.25,
+      "spread_deg": 3.0,
+      "cap_deg": 6.0,
+      "gain": 0.0895442241637263,
+      "gate": "stable_nonrest"
+    },
+    "response_router": {
+      "name": "C038_C038",
+      "weights": "C038/router.pt",
+      "sha256": "7ea7afee47590c8d155006be3647e21a08271ace3eaef158e73750855922d59b",
+      "gain": 1.0,
+      "gate": "valid_nonrest",
+      "kind": "history_softmax",
+      "backbone": "C003_debiased_b6_gain_025",
+      "prior_gain": 0.13577455005402334
+    }
+  },
+  "evidence_sha256": {
+    "protocol.json": "6a25af1a9825469834ab1ee07b577c19dbb7d30fc32025bc34146628efa94333",
+    "review/candidate_recipes.json": "8fe9288b01c425ecc65c0bc2324432d20de3139416d47c44de06d8acbe577393",
+    "review/development_frontier.json": "57e1ace875244de1f341ed1b9ba993bf04dd50d5b062c8c3820898377b69c496",
+    "review/campaign-counts.json": "4be9f6a586b4e4bd3fcb7bee095f469b59944d5be48dcddbde41001a3291567d",
+    "review/FINAL_PROTOCOL.md": "27f8f6cb9dfa565982c071e7896b92aa58059e4b45f1e6d57a0d6213b6d20040",
+    "review/final-anchor-spec.json": "28984cd79a940e9652bc15e04700acf67677ab1a7186dbb1984441e91e048b72",
+    "review/vehicle-reference-protocol.json": "71ebe2230d598b64b88e09dfdd5c2316adb11aee220a150f57887be007fa00e3",
+    "review/native_catalog.py": "4e76f71d4e8192047e7abbd176b2086edff5e308507107a895de63284ad147a9",
+    "review/native_blocks.py": "af3b74dd2e60c2b85379c597c7c9716dcc43d36bcc6d45fcf582e8d4b9b42d43",
+    "review/optical_reference.py": "7ea23bf900cb367e3823d8dbeb0d04f7c0cb8805abec924ec9427146cd60f571",
+    "review/vehicle_reference.py": "d53666803db7da1e401a9ec41e2f639bda180537a23e763ee0a1f1dc2778190d",
+    "review/fixture_level.py": "923141725f766b29cfb1023a3ccb09229ef2de613e9108c00a18787dfcf21c99",
+    "review/locked_replay.py": "81e5f4a570e2dfe473e987f4d41066b5a8ec7aded31058915318c1af7607d261",
+    "review/mixture_replay.py": "4f084e8cc725b61f6dc5591db2fa3b0e00aaccacae24cded4cc677b9d0d9c2dc",
+    "review/temporal_readout.py": "1563654c509413ab364cb235db0bdf52a2ba0b2652a4812d83504602582a9baf",
+    "review/stable_force_source.py": "1c634d110987f7051789586cd11b51d26d863b0e800bcc6841593e5ff3655a49",
+    "review/multirate_blocks.py": "01ca056d90c38bc6ab9ec97139a7b577ca4be5d0ba173c7ead49cecdb1a4bbe2",
+    "review/filter_response_bank.py": "dcf9e20633b7cdcccb023e29825afcc3410581835cec6827ddb10f656cdb7804",
+    "review/lock_from_frontier.py": "e1db2416637e214fd86227c1c65dd790227ce75af5196886d640f9029105848e",
+    "external-sources/sealed-transfer-tests/protocol.json": "cf7b4d9665d7917bc5857ea687f5166d6f2d581d7fdc085b9eeda5e4cca24d51",
+    "external-sources/sealed-transfer-tests/source-files.json": "57e9e61e0ca379565f5a5ed2cbc8f188c70e5d8ed665a99af7dac75caa684064",
+    "review/supplemental_data.py": "745743753f5c74ab14de30d78d21b2d297de2cefded7015148028fd4d9e361b0",
+    "review/score_supplemental.py": "20d70e7d5e4270cdc3d2deea4ad0486725dec2d489fa7c319bfe76e2d39ee28c",
+    "review/oxford_sensitivity.py": "8157e8d188fd555b467c1da1fee826189524e2cb749f0218798e5661edd7f9a3",
+    "review/tum_reference_quality.py": "ad88a75377f067f26278d97a24fda63b190d88565f47181523bd7be8ebd44c66",
+    "review/final_geometry.py": "5e5434d7fafda74c3b1ce701137bb4b6af6e78a2cb41274a28812e78f7eaeaed",
+    "review/mount_prediction_audit.py": "6146f8973fce6fa2677b94fbc50e302870a51c8da588a81684a0907fc1c0ad95",
+    "review/vqf_response_controls.py": "79a851e8258dfbb47e4ed276f9359c4bd529b5152e19135872e28d834b8e635a",
+    "review/response_router.py": "0fb6df07b36a4188177daf0802310b3c871974a875653aefbf0ed11383e48907",
+    "review/check_locked_causality.py": "f9c4248768299d3033fd10dda1895649153b30672d391763a2c402e971887e6d",
+    "C003/online_bias.py": "5ce9d296da9a93bcf9595cbab6fb0ed759ea544c0700f646a5202d7a2a564498",
+    "review/optical_score.py": "fc2827651543e144c38c42ce03ec98b9598eff53eb6416329e2263721c14a0ec",
+    "../transfer-mamba-20261123/models.py": "2b1bd7473b29d5f8368a94657a3987a8a34c2dc4e6b14dda199b787037079440",
+    "../transfer-mamba-20261123/review/replay_native.py": "a00d1ce73373f503a27df658da7b2206c7aafaa798e80fd56b096ae21e299211",
+    "external-sources/davis-handheld/protocol.json": "f37bf48d3e96f9e355eb4adb9d71faf8f9386d3ea280d9a0e4123697fbd98176",
+    "external-sources/davis-handheld/source-files.json": "8128889443cc4fd699e96299576eea82fe93f73e52f482a245383de1d4049cbe",
+    "external-sources/davis-handheld/preprocessing-lock.json": "85a76249d676bed28fa83ab8c2575b76cae42c9fcc34812f4f3be48d3b0f6e45",
+    "review/davis_handheld.py": "10c2a7b4f606f6c1131714a2a8e60f427729fd08192f9fea8d8520f426cd9a5a",
+    "review/score_davis_transfer.py": "10aa26bcd09122021079045a996d1662af673891db29b6d506f267b4925bf2d2",
+    "external-sources/penn-handheld/protocol.json": "0ae1f9bd4c73dd5fff6e3b7d4aa5fb9c3126073c094cafea3ba955f33a14b641",
+    "external-sources/penn-handheld/source-files.json": "9b55173adcf4fa4a0ddc21c0c7898cee19e2a6620a20ce7928fb971bba4b3e37",
+    "external-sources/penn-handheld/preprocessing-lock.json": "db1f66cf4bacf43355303ce7faf404d12c6505b701e14cf5ebb72d922c27b3a9",
+    "review/penn_handheld.py": "308c926e2ff18a721f06a493572fe1db5bb7053be2dee85170522ff7f1ddd4c4",
+    "review/score_penn_transfer.py": "62afc07517a39aaaf1250462e874c8941d2057b860978ad4af90da23b8a82340",
+    "review/C038_audit.json": "b66a2637e479bb985dc042ba4473100ed5703d052f4ed5f36e07389292311397",
+    "review/check_midpoint.py": "a6c87afcb8429d090ffac632eacb4680e3642ed61e7783bfbe8e77231dc992b6",
+    "review/C023_C035_development_shift.json": "d17db3d5a649c16c41b994e4971ca63e598a664a3fbad66053db6a7b5a4af65b",
+    "review/C037_certificate_check.json": "2d69e2186af4d5958456a878c92dc1a43a85885c1c0942a074fd7da2484f4f57",
+    "review/decisions.jsonl": "74dbfea2cb7a2ea9142616cb600aa2976ffcaac1f456b4b3d3dca08f2501f272",
+    "C001/protocol.json": "2d53541bc537312dfa84d02ae77349c3e6deeb16e5b645d161fcab426d0582d2",
+    "C001/results.json": "844109fc2875816f7ec412bd9bb4d2fe27c6b42e7d0dd902e43d7609702caa93",
+    "C001/sequences.csv": "4f49880fecb63378b5270919b4fbb37e695cda373471d26e9f9030bcdd153e17",
+    "C002/protocol.json": "b8a5a117f823a74f3b070cff432d212a0c8ae212bad90ad1df2f02c7f8ff6f32",
+    "C002/results.json": "cf85a0432f850112c50c488ee209e7dad36f8e801374f19aba5010632f2c0740",
+    "C002/sequences.csv": "8962723eb6e728884da4ddbd285cb690f350f300714ed34a908788a6d5d5613b",
+    "C003/protocol.json": "720c014ef469be1063693b7fc7a2132896c098c0c7ee6d786b06df2b02a4c78c",
+    "C003/results.json": "18e5169184a09bf06c5ad110f5d65b2df2658c144af2638ae53ddaa295a14b97",
+    "C003/sequences.csv": "6b8f8b94a88cff1fce7c4f7bbe098545c9fbcd6416fd3639b51462c2d9c73382",
+    "C004/protocol.json": "1ce32841bb03ecf6331a4f6656dc52e1c531b723e8293d9e9ce622f08b6de45f",
+    "C004/results.json": "a32105df74a04ef8be8c8bc7238b9c635bd57b1193d9cc9cfa52e37f9f1a05a6",
+    "C004/sequences.csv": "29592caa4a5052d2fcc1fa609a0df2ee66002448b3577de8b1e07b318b18c093",
+    "C004/training.json": "d9588c64270ee10c8f0d684c848c6a804d0bd4ffffff989c11b5b70b6bb8e8ba",
+    "C005/protocol.json": "a9c1a8bdd2428cb98ffa4549aa58cc32c82d0de7c3fd64a1364cc1b8bf72f29a",
+    "C005/results.json": "3a9c69a56c31fd6e5f75a41a0c7803742c60b602f1458046c4eab003d5c23088",
+    "C005/sequences.csv": "74363236fb0a7b3cb8cca9b0a7503d1512c2c4f001caa581db19996c016b4947",
+    "C006/protocol.json": "99f9ba615f9d5429e5b24dfbb55bdcc116763860cdafdfba7bd01738ac01d4eb",
+    "C006/results.json": "2b47c908350f552de7987c81f870458b48ea8fdba3089138722482090f1a3c2e",
+    "C006/sequences.csv": "79ac38e387bae53a983f5b6bf84202c13b287eb6cc1f5890990029c58c9f51b7",
+    "C007/protocol.json": "2a4fa52fafb17dc25b7e187e1992d309457f06840900a946e6872a07aee26635",
+    "C007/results.json": "dd9bec3da10968eb6b0de20fac46ae8da7e14eb9061681262e65b19cda248eb9",
+    "C007/sequences.csv": "6e896dcbc69ae9b31cfd3ad6fec844227ff3cf6dcb2a517e36abec2a3f035df6",
+    "C007/training.json": "8a333377e8cc07587a21eb261d3401deef8c6119e1aaa009ca5a01d5dc1d1225",
+    "C008/protocol.json": "16b0cdeca27b500c30d31759826accfa835d9d213a02deaaa6cb0216408cc55f",
+    "C008/results.json": "e47bac05ee2948f0869974546628ecd4d7c3640a73f11efeb5af7de40160ec68",
+    "C008/sequences.csv": "d68f5d88c3650177f7e20a451f9e65e97499bfbefbb2978512783c737d045e59",
+    "C008/training.json": "194a262a3d8f3e49657a9787d7eb6ab9cad0922ba26f89a670f616ebff3b6842",
+    "C009/protocol.json": "69a149e1c2f4d5a14a32430c1282a73bf4c3e5aac277c4a5d55579a62a099f2d",
+    "C009/results.json": "207ccfac3d1cd7dd103c9107fe198f08d90abe49c06d20574868ff0d65a7afe0",
+    "C009/sequences.csv": "9e0de35e3ce43282968d73bfdcb863746c8c27dbaaa00452ded63cc603f86e04",
+    "C009/training.json": "767a7c1f6710c6e0a1d2e7edfdbd5231863628b7b7100345e2399110706b4fde",
+    "C010/protocol.json": "8884c10f9702886f6c0992b3c38ff02a6215c179a7eee5f1adc689c5866da55c",
+    "C010/results.json": "af9d31a1cb38c5f31c9ca209ff203b342203075fceb24c5c49de27d3a43057cf",
+    "C010/sequences.csv": "6d9980e280a63c4d05577ab7b0a1e1919e721dbe9d5281ee02ce815b612a0a4b",
+    "C010/training.json": "294dde7ed8861670ecad03f8bab02301d0c9fe7f09690f38f9c7a611f21fbf1f",
+    "C011/protocol.json": "f46f8ba69ceefa383168f2d9e9e27e6d3ec911f215949bf474cdca4c5991f45c",
+    "C011/results.json": "5258f12e260e124c64c5f453edcfd545b7616c8684d42733f8e66798a8348048",
+    "C011/sequences.csv": "0657948348fc69d579ac9f8ca7f1ec9c7eae0bf7835c41e960a22c8efa086189",
+    "C011/coefficient-lock.json": "958bcb53dcfd435b591f7e4485bf7de03b17b103759b0d2badf107ef769ad508",
+    "C012/protocol.json": "b27a5fdb9bc79ca5b4740d595c6cf38cceb661e01dd6045e2973213dcd02b855",
+    "C012/results.json": "cc8d182ee6c1f61f37b5234e1951dbae0b3eabd645ce86370c25c82af4db492f",
+    "C012/sequences.csv": "169feee0d055e242bffc0093c74285fe646255dc2bb208e5a4f51a8cfb270e1b",
+    "C012/training.json": "5f84b8c8d8cc1d9c07400d245afd103ce6c534fe58763326e953da267c207e38",
+    "C013/protocol.json": "e49e4fc18a19685ca8b47648b4b4e712bc72000348a803ed0c07efd9a776c177",
+    "C013/results.json": "1377a0adb85b7fa53f03a8b7dbf986016a487c38b87d09ee93e30759ad362c0c",
+    "C013/sequences.csv": "46e6bc29412933a4327b65e204225a5954e08ec48c59ec4c6591b71174168704",
+    "C013/training.json": "edbf834bedb371bc460753255f286ed636690ddb7542d228249dc4698cca3527",
+    "C014/protocol.json": "0a5ddb8f60a6cb50552df1340df0c5db57fffc0fbe02b6b0b58e827664231d5a",
+    "C014/results.json": "2531ed1a545c94d2b25b368571cfb0e369605bf3554901e6a21d821589795005",
+    "C014/sequences.csv": "1082c34e84021cfa0b6bbe9af20cfce31c69d95c0cc9cc4a67988ed899eae009",
+    "C015/protocol.json": "e0db5f295a0774317f6ae7ad4d60c0243fe99859c47b7970f65689f17ab364b8",
+    "C015/results.json": "c5a0d543b3adc12b3f3b72dc6edad318c583b29be2dd4faa55fbd7a94550e5fb",
+    "C015/sequences.csv": "a2ecd22d6706bffd7b2463f4110b4df6ff10a4f431756f8a01faf94606e65b0f",
+    "C015/training.json": "9991db2a8be60652c5fc66ba65f3eaa93d0251ce247bc732967bba5b98bcc9f0",
+    "C016/protocol.json": "7dd9dfcf55f7e4d693935764f8fcc7a15e5767079978faaedb5c5ed31a518609",
+    "C016/results.json": "0a9c5ef5499fccc12bbf2b8f8cbc42d270a026764436d3121f26b1446d55a3bb",
+    "C016/sequences.csv": "077a5b49beb4737a36fb0e00ffb18eb3cef92d1679b86b0bd4105452f4ec3363",
+    "C016/training.json": "e7a7ac636d3bf7d5dbfde01cde1fcc24024fc918d2d0a136da8e9a98932a5e9e",
+    "C017/protocol.json": "0a28fda7ab3ef512548483f671701a74fafd43f7a4fc82606be56d5372841b3e",
+    "C017/results.json": "24339637f63935b6e4c3eeef0c59aa3b2d44ebac843f4be0e72825c70260728a",
+    "C017/sequences.csv": "b84f5e87fc2eb34f68bfb9552d5221afec5513785512883d2188c78818f2c969",
+    "C017/coefficient-lock.json": "72029a76c43fe22d82450a08ccdbcc6ad23dfedfcb2c0f446dbab0e65de2f8bb",
+    "C018/protocol.json": "7ff04ed6c372093c465dae36552f4456288ee8087620bb5c44638c366ad2ea90",
+    "C018/results.json": "22611bbb8594310b79744a31d134fcda14e91aa4887d7337507e37e3369f834c",
+    "C018/sequences.csv": "20ee5e2897e2e261d06866dde82df5628ca65f667a11fafe125005b0f48ad137",
+    "C018/training.json": "988240d145b0b8fd2f903762c5219fbb26745717c324cda6e05566dd56232453",
+    "C018/pair-lock.json": "de665cd9ff7819d8170700689db1e8f6962c98612a98a644cc1004d0866a1aa7",
+    "C019/protocol.json": "54f705becd48dbde7749e9459a874cb754bb84927a3c2c566bd4f34030e5bc8f",
+    "C019/results.json": "7bf3313e57776b186288afee6c026a1a7f948cb27f690500c5fde9c98a275bd4",
+    "C019/sequences.csv": "045b4f3cb31c3da1b0763c4cd0493f48c3ed35f2048c6a36de7d7e733ee61b33",
+    "C019/training.json": "ba68d40d4ca5130b9f99ad6ecd5ddc0706efd998b76009a8d2031d4606b09171",
+    "C019/sampling-lock.json": "3325708d541ee2187f96951f00bf079c24038063480ade1b513473cff114b505",
+    "C020/protocol.json": "bcd8f98f964fe81407cc77a9b0250f30a1d9ac69d055fa8c1f0b9df519a2c322",
+    "C020/results.json": "058830097a5989b5daffaf6d16263c7d978545078c50344830f225172420dbbc",
+    "C020/sequences.csv": "e90a4d30754376cc360cece7c2e11cdb405cdd96bdfa816b913be12fc7bd9f51",
+    "C020/training.json": "f7a1ab859f69be06cf874ac821527680a1e8f5c8549a14e5a9e2dab7d88fb9ac",
+    "C020/branch-lock.json": "994ee8b9442616fba47c7e67dba3761cdba5edf2ea01662c2f94b52476566937",
+    "C021/protocol.json": "19323db0b11b5f43cd19430f0243e2c6aba4d1988bb1bbb641740e64a041324d",
+    "C021/results.json": "0e6237763ea8081d78a4e3d812aaafe32d12a1cba9ecd08d1338e0fe6660121d",
+    "C021/sequences.csv": "03dc31d3b2fa34cf01dd720cc14cde13ec87578c8007bc713afe24182f28e0c3",
+    "C021/training.json": "345d7fb8636396301b7e7844dd642fb37286bcacca04d9eab5d5942a285cc5cf",
+    "C021/branch-lock.json": "f2a4b57765bc21008949ae5284ed3a97446c685fe583c77827b29caccef796e7",
+    "C022/protocol.json": "d63d290c353fbd211a75fc8b927b3c4975c5cae5b968cb5e33764377d480a57b",
+    "C022/results.json": "d5fb85c8e717d91e9af82085f1b1364b87597ee6ef6363a5e431641a74180417",
+    "C022/sequences.csv": "961c2dff4abaa3231682ef72c67760454523568e822eed228db3c892897290b9",
+    "C022/coefficient-lock.json": "c02694c3d396a45a8b8b1b176891962d39a226c03d5bba1399196c44e575cac0",
+    "C023/protocol.json": "8ab4e2e06c3a707924d10599a4788adf1f72353f235a9ae29ce2934c64f4c1a0",
+    "C023/results.json": "670413c8ecd2b9d076b45ecf78c4a7cc1f2da5fefac5d0a74888136b8026e738",
+    "C023/sequences.csv": "144b9b3c32d24ff33c0577ee19d703475267c1b6e68ab4058a3b5cb2a6f83c6a",
+    "C023/training.json": "f1d7c0a1265545fb5e7a646e938c6f0aa1412c723fd882676be664f46e75702c",
+    "C023/router-lock.json": "0fdd666aa07e36529ab0260822e66b4ce4fddd50798abcfcaa64b7e02e830c97",
+    "C024/protocol.json": "3ff2caa3bafcadd19a699038b105c8ee442bee5a935a230a2c822140d26643ef",
+    "C024/results.json": "4bb710b89111cc50b7bf530d54ee9e1fb3932237c1f256880595dab31fd94c35",
+    "C024/sequences.csv": "83548319f4544c61de8088bcdbb8d61d9772b9d55b41fbf827286becece898a6",
+    "C024/training.json": "0fc40d2552505a8d869fd33f8c7cf323aa6f87d4613cfa0bed15d52edd3dcd58",
+    "C024/router-lock.json": "27720275dbfef744d3ec5b87b65309183f75998b30a10884eb75510ba249a6eb",
+    "C024/sampling-lock.json": "58a7e1ddb25d75179906b59a517c32673ef25a508146247e62d7ba3c7d71815d",
+    "C025/protocol.json": "947362d43e392229308042df119cfc596eebfdc9ffbe9f447c09cffa730f331e",
+    "C025/results.json": "df42d962bcfe5dc4056ef8f0fe43b8eedd943ef37b3376a4c60662c01d482218",
+    "C025/sequences.csv": "961df103f8e529fe6bd3c15c4fa587b5d6d0818dfb3345d94bbffbf4f92bd25e",
+    "C025/training.json": "8d6c1c7d80fe2fd90b2ef2afb898ba2712346ffd147fa700d3513b9996d41c2c",
+    "C025/router-lock.json": "fed275373c8634bba114ac6bddb1a9454fabfeff1bc518b6e030bbfc4b38c26e",
+    "C026/protocol.json": "c31b4d20c23b4772a0e1c254eeeaf433fa9022fead6f964ff1527634fc428e1b",
+    "C026/results.json": "86a44f8848407218616caf14ae32d4d3719bef05f5ddb3ea045e9b431cb273c0",
+    "C026/sequences.csv": "e7e891337672d44def54dd6d6910cb454a0827f20b1496f6b9d257e10845ed73",
+    "C026/training.json": "79d7ae1593fea4a5d9d2448b172e40ef5de4387e6cea5ed1409bb80d104c45ea",
+    "C026/router-lock.json": "52608b93703a88eb4eb0e84a7bf97e871134a9523b956314b43146448eaf803e",
+    "C026/sampling-lock.json": "d530c1bba1e83f4a75bd4f702d8f3cc56173bfc2caaf6df16bdc75b79e806508",
+    "C027/protocol.json": "dc315795be0d477fda247bb0398cfcd87528f387e996781c08a0dfe0f739752e",
+    "C027/results.json": "9388b73196ccf8289dd6aff4a26e881b57ed480ef12096ca736c28a44e07b22a",
+    "C027/sequences.csv": "4eb92efef69d7338fb58b22475aff79dbb8823276bf66a4a28319f996f1d030d",
+    "C027/training.json": "89aa15a2560ec5303fb9c888ac840110b8abe736fe83054b900055b256f50cd7",
+    "C027/router-lock.json": "2ee4912eca084ffb236397f390871569b878e488f0965ce2547e1169014e7fff",
+    "C027/sampling-lock.json": "5d53699ba607986d8115e119931899b619f506f337b68f4f525ae7f6a9f91290",
+    "C028/protocol.json": "01c5be6ee7d1e923845809b792898adabb9b8866e5bc955416250845432fb600",
+    "C028/results.json": "714f707e9fddaa7f6fd3804bd50ebcd9e1437d7c824550bec2e4a63076fb73fd",
+    "C028/sequences.csv": "c972e453e2948632ccb2badda5f172c2d3f4b65b6a6669a242bc15a05aaf7b04",
+    "C028/training.json": "746054ae56bf3b62ceb8e0bc98ef38293ddcf8a833566efc7be4688ad62c607b",
+    "C028/router-lock.json": "8079a4f17d6056fb1f517a1544806ef5e52bbd15b54953f081767446b75526b1",
+    "C029/protocol.json": "5959ceb76b987e98605e5a2ab28aadd3afd3f0aebdc0e7874a2a1372d6ec92d8",
+    "C029/results.json": "8baf5a678f27e0aada6ce98f94101ed442a1104e42333d4c0cda590090220248",
+    "C029/sequences.csv": "18002d5ce846691d6513ade4b07f195257fbcb001e68898b1e7ff9b9875f33c5",
+    "C029/training.json": "05328907237ef9220d207bb393267cdf746cfc47393d7ca00e918694364c4e74",
+    "C029/router-lock.json": "06963d54bdfde733e1d2008f4453d647c238abefe81a590d16baeb4b83b6b866",
+    "C029/geometry-lock.json": "adaec26534f0cae59d898b25e40e99eebd992f5cb32409f2ed39d37375d992c8",
+    "C030/protocol.json": "3d11499e19edeea9b41aee37ff7984e3f15b6f2386734108d1adcccb795c92b2",
+    "C030/results.json": "a5aa44a707f231d9c0c36faaf4d4e1d6ab69e62bf38dd6d15ec0a9771aca8ca0",
+    "C030/sequences.csv": "f1b4cce1d79f16f61d27d516d38437975e3d607b3bd235392d3e8e742936d451",
+    "C030/router-lock.json": "ed293336bd261b43d66962c9738df7f17dfa061aea5b3121dfcfc3f241bd2c0b",
+    "C030/solver-receipt.json": "15bd8309b43d1d53e35d07cec9801a36928a4131aa3d5b417b2132f3c1ebbbcf",
+    "C030/finite-difference.json": "f6c0b4beac08cdd432f69652e3910b4a32de6913b6bc51f1823f8e5429a3a915",
+    "C031/protocol.json": "a4fe95f0903ede81479a7a5d23d6cdab62c9bf80f70c3c2fc63f40712704ee7c",
+    "C031/results.json": "0ea45ddcf1910c31e354091d9b674eebd3e4317ce5cb1fd879e6f2d8344f26c3",
+    "C031/sequences.csv": "c48d9281cacfbe51643f6c0864ffbdae46e994148c091ad9473571d25f1fda8e",
+    "C031/router-lock.json": "a61f59b5c7dad6a71283753aaeefa7a9998bb89a86bb97ea2718b66c8fd69f9c",
+    "C031/synthesis-lock.json": "d6f8268cd1be19c54b59199f92ca32199d8924d6df485515eb38ed1c6a3ff63a",
+    "C031/synthesis-verification.json": "e32321f28e9091ffb2070a3f5e540578ccefadcc849283b66c2c94cc1fd3a8f8",
+    "C032/protocol.json": "f15acb00f6e6408a75f7002031be3068eae65d525bc118f36c24f2a372d97940",
+    "C032/results.json": "764efc3754dfd046a754aa4d020905c9fdc64be4340e5335ad11e0428d3adc64",
+    "C032/sequences.csv": "9bc42d628763ac4cea2778ab7da67908abd939b9005bb82d83606b9319fb14b0",
+    "C032/router-lock.json": "eeb3cb7f772123a66caece27d30e7bd253ed728c89fcb77115583c2a41c17fa0",
+    "C033/protocol.json": "83d9e74343bdd3ab8d1026dbcbb86132d46bba4209bf5d784b116ea8debcbd4d",
+    "C033/results.json": "a6e70cb234857bc4e311babf117b4502830d90efb8c4a77722ea6d5e2d019f1f",
+    "C033/sequences.csv": "03b8a51880e21feb3e74ded2a4aafbfbcfbc37fb1fc4234487dfde40f4c40769",
+    "C033/training.json": "5699e82f4f82cf05526bdd0f156ab9bba7f6d6c7ac41f33bbe1ad436344b6128",
+    "C033/router-lock.json": "1d7a9127ebaec4a8f78c28b9167a890c06418a20251815e88df50e399413f559",
+    "C033/sampling-lock.json": "aa1eb5379e8f3f36a23c43a80264436a3143baf9e05b3cc35018c5c7726c5187",
+    "C034/protocol.json": "3f66998f1f5f2b109f447c79df1492cbef4d8a5b639e5dfc7ff6c7a5b4159ce2",
+    "C034/results.json": "89bdcb2daa2d74bd5ae1d9e1e230a43e8726381fbee52d37c140d83e489c95fa",
+    "C034/sequences.csv": "d6dffe6bf16c39c068e76da631be5cd34209388f7772497b6d97a44a410612c9",
+    "C034/router-lock.json": "cf270d0b11f29cc5e03cb2d24db4716af646edab25be8008c1c36e0fa0c6f42b",
+    "C034/solver-receipt.json": "ac47ae01a35c9c31c20c510321d82766e09107ddccacef12bfe675e3a6325373",
+    "C034/finite-difference.json": "625de5f38ac634e4e38afc7e790305afbfd70179792135b5f2eb24d85a60a27f",
+    "C035/protocol.json": "49167ed0a26007e2168d6714e70651354006c6f79a4145d5bc060974d6095680",
+    "C035/results.json": "a14084435b128829550bad8126b09629af9a10c48aa1daef237790586c08a573",
+    "C035/sequences.csv": "7c88b4908feed3279dec89ad6090e3b9adba515e5153eb2057997396abde9f15",
+    "C035/training.json": "df9f0072654976a11cc23b07656dd0bf30613bf376a0e8bc2e1540df7a7e0ea8",
+    "C035/router-lock.json": "8e5701b32ef2f4190ab76c9e3ff424b943e66dc9a4ee7a26f42987daf4bbf352",
+    "C035/solver-receipt.json": "193d005a4ffe4305a5ee9c0246570b1b41bb2b1f191d4cfc547546a8a459105f",
+    "C035/finite-difference.json": "129e6049acf78fd9c49d0c2ec648b6cf4186cfe5eaacb44c25ef15fa0a98ac69",
+    "C036/protocol.json": "6f48abc9e0205b6be223c13e007ec695b00f2408b930b399ef7c0269a7f27986",
+    "C036/results.json": "bab9901c85963a705c39912c4b019872f4333087726d9c038da0768ad584cb6f",
+    "C036/sequences.csv": "63c5a43a352aa4ce681ccf8e572bd464f638840b09556863c60ac905b53c575c",
+    "C036/coefficient-lock.json": "5bb80f0ce29f0e3e39537ec14115b0026856e29d28b361ae28e4b927f5025006",
+    "C036/solver-receipt.json": "8e28ab70e27fa9d6747c700c48c025866b452015dc1c85fd7ab791f6f54560d5",
+    "C037/protocol.json": "1bb759aed38b44ac39521107384740e997cb3736d760b1850d82aee21b33b403",
+    "C037/results.json": "28d55469befb1740e6f19d9cbb17afe03bc06d1b5b11477acdd37ce8ddd02cc9",
+    "C037/sequences.csv": "275bfa12cd8f8caffc67711ba3a5f676c25b2c4b7efc470ede32dc87d6d207ee",
+    "C037/coefficient-lock.json": "a6da61a5c90dae61d40807178026c972c306d184c6e958c50c0f757525884e1f",
+    "C037/solver-receipt.json": "456b1749bc647da0375b8c7f54b8cf83b8e9cf63d92b9289b0de39d75f66632f",
+    "C038/protocol.json": "0a11fe49b54508532e008299950ef28ba6d676737d3af690a97c4a60801422ba",
+    "C038/results.json": "710f2c11de49952efe45b3b58a7255981e5c1de91dac488707a8dc6cbd3790c2",
+    "C038/sequences.csv": "a484398220f0cc195262fb4abb32b75e24d74eb3bf532e9a8ce320d00d69b6fc",
+    "C038/router-lock.json": "81988e42f4a9d29089b54373da6d9d2258b95148bdf7fdf9ca7a7dba7706a65f",
+    "C038/synthesis-verification.json": "4576df1d6c60a61bca89289ccb23fa0499d779e80d82f852574d7081065a0153"
+  },
+  "formal_cases": [
+    {
+      "dataset": "BROAD",
+      "record": "04_undisturbed_slow_rotation_with_breaks_A",
+      "group": "undisturbed_slow_rotation_with_breaks",
+      "side": "development_previously_used_for_selection"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "05_undisturbed_slow_rotation_with_breaks_B",
+      "group": "undisturbed_slow_rotation_with_breaks",
+      "side": "development_previously_used_for_selection"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "10_undisturbed_slow_translation_A",
+      "group": "undisturbed_slow_translation",
+      "side": "development_previously_used_for_selection"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "11_undisturbed_slow_translation_B",
+      "group": "undisturbed_slow_translation",
+      "side": "development_previously_used_for_selection"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "12_undisturbed_slow_translation_C",
+      "group": "undisturbed_slow_translation",
+      "side": "development_previously_used_for_selection"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "21_undisturbed_fast_combined",
+      "group": "undisturbed_fast_combined",
+      "side": "development_previously_used_for_selection"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "22_undisturbed_fast_combined_240s",
+      "group": "undisturbed_fast_combined",
+      "side": "development_previously_used_for_selection"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "23_undisturbed_fast_combined_360s",
+      "group": "undisturbed_fast_combined",
+      "side": "development_previously_used_for_selection"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "26_disturbed_phone_vibration_A",
+      "group": "disturbed_phone_vibration",
+      "side": "development_previously_used_for_selection"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "27_disturbed_phone_vibration_B",
+      "group": "disturbed_phone_vibration",
+      "side": "development_previously_used_for_selection"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "37_disturbed_office_A",
+      "group": "disturbed_office",
+      "side": "development_previously_used_for_selection"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "38_disturbed_office_B",
+      "group": "disturbed_office",
+      "side": "development_previously_used_for_selection"
+    },
+    {
+      "dataset": "Sassari",
+      "record": "medium/XS1",
+      "group": "medium",
+      "side": "development_previously_used_for_selection"
+    },
+    {
+      "dataset": "Sassari",
+      "record": "medium/XS2",
+      "group": "medium",
+      "side": "development_previously_used_for_selection"
+    },
+    {
+      "dataset": "Sassari",
+      "record": "medium/AP1",
+      "group": "medium",
+      "side": "development_previously_used_for_selection"
+    },
+    {
+      "dataset": "Sassari",
+      "record": "medium/AP2",
+      "group": "medium",
+      "side": "development_previously_used_for_selection"
+    },
+    {
+      "dataset": "Sassari",
+      "record": "medium/SH1",
+      "group": "medium",
+      "side": "development_previously_used_for_selection"
+    },
+    {
+      "dataset": "Sassari",
+      "record": "medium/SH2",
+      "group": "medium",
+      "side": "development_previously_used_for_selection"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R5-1",
+      "group": "R5",
+      "side": "sealed_current_campaign_historically_exposed"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R5-10",
+      "group": "R5",
+      "side": "sealed_current_campaign_historically_exposed"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R5-2",
+      "group": "R5",
+      "side": "sealed_current_campaign_historically_exposed"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R5-3",
+      "group": "R5",
+      "side": "sealed_current_campaign_historically_exposed"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R5-4",
+      "group": "R5",
+      "side": "sealed_current_campaign_historically_exposed"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R5-5",
+      "group": "R5",
+      "side": "sealed_current_campaign_historically_exposed"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R5-6",
+      "group": "R5",
+      "side": "sealed_current_campaign_historically_exposed"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R5-7",
+      "group": "R5",
+      "side": "sealed_current_campaign_historically_exposed"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R5-8",
+      "group": "R5",
+      "side": "sealed_current_campaign_historically_exposed"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R5-9",
+      "group": "R5",
+      "side": "sealed_current_campaign_historically_exposed"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R6-1",
+      "group": "R6",
+      "side": "sealed_current_campaign_historically_exposed"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R6-10",
+      "group": "R6",
+      "side": "sealed_current_campaign_historically_exposed"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R6-2",
+      "group": "R6",
+      "side": "sealed_current_campaign_historically_exposed"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R6-3",
+      "group": "R6",
+      "side": "sealed_current_campaign_historically_exposed"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R6-4",
+      "group": "R6",
+      "side": "sealed_current_campaign_historically_exposed"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R6-5",
+      "group": "R6",
+      "side": "sealed_current_campaign_historically_exposed"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R6-6",
+      "group": "R6",
+      "side": "sealed_current_campaign_historically_exposed"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R6-7",
+      "group": "R6",
+      "side": "sealed_current_campaign_historically_exposed"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R6-8",
+      "group": "R6",
+      "side": "sealed_current_campaign_historically_exposed"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R6-9",
+      "group": "R6",
+      "side": "sealed_current_campaign_historically_exposed"
+    },
+    {
+      "dataset": "TUM-VI",
+      "record": "room3",
+      "group": "room3",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "TUM-VI",
+      "record": "room4",
+      "group": "room4",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "TUM-VI",
+      "record": "room5",
+      "group": "room5",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "TUM-VI",
+      "record": "room6",
+      "group": "room6",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "IMU-Array",
+      "record": "vehicle_trial/ImuArray_1_1_IMU",
+      "group": "vehicle_trial",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "IMU-Array",
+      "record": "vehicle_trial/ImuArray_1_2_IMU",
+      "group": "vehicle_trial",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "IMU-Array",
+      "record": "vehicle_trial/ImuArray_1_3_IMU",
+      "group": "vehicle_trial",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "IMU-Array",
+      "record": "vehicle_trial/ImuArray_1_4_IMU",
+      "group": "vehicle_trial",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "IMU-Array",
+      "record": "vehicle_trial/ImuArray_1_5_IMU",
+      "group": "vehicle_trial",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "IMU-Array",
+      "record": "vehicle_trial/ImuArray_1_6_IMU",
+      "group": "vehicle_trial",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "IMU-Array",
+      "record": "vehicle_trial/ImuArray_1_7_IMU",
+      "group": "vehicle_trial",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "IMU-Array",
+      "record": "vehicle_trial/ImuArray_1_8_IMU",
+      "group": "vehicle_trial",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "IMU-Array",
+      "record": "vehicle_trial/ImuArray_2_1_IMU",
+      "group": "vehicle_trial",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "IMU-Array",
+      "record": "vehicle_trial/ImuArray_2_2_IMU",
+      "group": "vehicle_trial",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "IMU-Array",
+      "record": "vehicle_trial/ImuArray_2_3_IMU",
+      "group": "vehicle_trial",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "IMU-Array",
+      "record": "vehicle_trial/ImuArray_2_4_IMU",
+      "group": "vehicle_trial",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "IMU-Array",
+      "record": "vehicle_trial/ImuArray_2_5_IMU",
+      "group": "vehicle_trial",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "IMU-Array",
+      "record": "vehicle_trial/ImuArray_2_6_IMU",
+      "group": "vehicle_trial",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "IMU-Array",
+      "record": "vehicle_trial/ImuArray_2_7_IMU",
+      "group": "vehicle_trial",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "IMU-Array",
+      "record": "vehicle_trial/ImuArray_2_8_IMU",
+      "group": "vehicle_trial",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user2/syn/imu1.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user2/syn/imu2.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user2/syn/imu3.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user2/syn/imu4.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user2/syn/imu5.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user2/syn/imu6.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user2/syn/imu7.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user2/syn/imu8.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user2/syn/imu9.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user3/syn/imu1.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user3/syn/imu2.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user3/syn/imu3.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user3/syn/imu4.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user3/syn/imu5.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user3/syn/imu6.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user3/syn/imu7.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user4/syn/imu1.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user4/syn/imu2.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user4/syn/imu3.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user4/syn/imu4.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user4/syn/imu5.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user4/syn/imu6.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user4/syn/imu7.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user4/syn/imu8.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user4/syn/imu9.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user5/syn/imu1.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user5/syn/imu10.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user5/syn/imu2.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user5/syn/imu3.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user5/syn/imu4.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user5/syn/imu5.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user5/syn/imu6.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user5/syn/imu7.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user5/syn/imu8.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "multi users/user5/syn/imu9.csv",
+      "group": "multi users",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "pocket/data1/syn/imu1.csv",
+      "group": "pocket",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "pocket/data1/syn/imu2.csv",
+      "group": "pocket",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "pocket/data1/syn/imu3.csv",
+      "group": "pocket",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "pocket/data1/syn/imu4.csv",
+      "group": "pocket",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "pocket/data1/syn/imu5.csv",
+      "group": "pocket",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "pocket/data2/syn/imu1.csv",
+      "group": "pocket",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "pocket/data2/syn/imu2.csv",
+      "group": "pocket",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "pocket/data2/syn/imu3.csv",
+      "group": "pocket",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "pocket/data2/syn/imu4.csv",
+      "group": "pocket",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "pocket/data2/syn/imu5.csv",
+      "group": "pocket",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "pocket/data2/syn/imu6.csv",
+      "group": "pocket",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "slow walking/data1/syn/imu1.csv",
+      "group": "slow walking",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "slow walking/data1/syn/imu2.csv",
+      "group": "slow walking",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "slow walking/data1/syn/imu3.csv",
+      "group": "slow walking",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "slow walking/data1/syn/imu4.csv",
+      "group": "slow walking",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "slow walking/data1/syn/imu5.csv",
+      "group": "slow walking",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "slow walking/data1/syn/imu6.csv",
+      "group": "slow walking",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "slow walking/data1/syn/imu7.csv",
+      "group": "slow walking",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "slow walking/data1/syn/imu8.csv",
+      "group": "slow walking",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "trolley/data1/syn/imu1.csv",
+      "group": "trolley",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "trolley/data1/syn/imu2.csv",
+      "group": "trolley",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "trolley/data1/syn/imu3.csv",
+      "group": "trolley",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "trolley/data1/syn/imu4.csv",
+      "group": "trolley",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "trolley/data1/syn/imu5.csv",
+      "group": "trolley",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "trolley/data1/syn/imu6.csv",
+      "group": "trolley",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "trolley/data1/syn/imu7.csv",
+      "group": "trolley",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "trolley/data2/syn/imu1.csv",
+      "group": "trolley",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "trolley/data2/syn/imu2.csv",
+      "group": "trolley",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "trolley/data2/syn/imu3.csv",
+      "group": "trolley",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "trolley/data2/syn/imu4.csv",
+      "group": "trolley",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "trolley/data2/syn/imu5.csv",
+      "group": "trolley",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "trolley/data2/syn/imu6.csv",
+      "group": "trolley",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "OxIOD",
+      "record": "test/multi-attachments/pocket/imu1.csv",
+      "group": "pocket",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "RepoIMU",
+      "record": "Pendulum/Pendulum_Test03_Trial1_Segment_1",
+      "group": "Pendulum/Test03",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "RepoIMU",
+      "record": "Pendulum/Pendulum_Test03_Trial1_Segment_2",
+      "group": "Pendulum/Test03",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "RepoIMU",
+      "record": "Pendulum/Pendulum_Test03_Trial1_Segment_3",
+      "group": "Pendulum/Test03",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "RepoIMU",
+      "record": "Pendulum/Pendulum_Test03_Trial2_Segment_1",
+      "group": "Pendulum/Test03",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "RepoIMU",
+      "record": "Pendulum/Pendulum_Test03_Trial2_Segment_2",
+      "group": "Pendulum/Test03",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "RepoIMU",
+      "record": "Pendulum/Pendulum_Test03_Trial2_Segment_3",
+      "group": "Pendulum/Test03",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "RepoIMU",
+      "record": "Pendulum/Pendulum_Test03_Trial3_Segment_1",
+      "group": "Pendulum/Test03",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "RepoIMU",
+      "record": "Pendulum/Pendulum_Test03_Trial3_Segment_2",
+      "group": "Pendulum/Test03",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "RepoIMU",
+      "record": "Pendulum/Pendulum_Test03_Trial3_Segment_3",
+      "group": "Pendulum/Test03",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "RepoIMU",
+      "record": "Pendulum/Pendulum_Test04_Trial1_Segment_1",
+      "group": "Pendulum/Test04",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "RepoIMU",
+      "record": "Pendulum/Pendulum_Test04_Trial1_Segment_2",
+      "group": "Pendulum/Test04",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "RepoIMU",
+      "record": "Pendulum/Pendulum_Test04_Trial1_Segment_3",
+      "group": "Pendulum/Test04",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "RepoIMU",
+      "record": "Pendulum/Pendulum_Test04_Trial2_Segment_1",
+      "group": "Pendulum/Test04",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "RepoIMU",
+      "record": "Pendulum/Pendulum_Test04_Trial2_Segment_2",
+      "group": "Pendulum/Test04",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "RepoIMU",
+      "record": "Pendulum/Pendulum_Test04_Trial2_Segment_3",
+      "group": "Pendulum/Test04",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "RepoIMU",
+      "record": "Pendulum/Pendulum_Test04_Trial3_Segment_1",
+      "group": "Pendulum/Test04",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "RepoIMU",
+      "record": "Pendulum/Pendulum_Test04_Trial3_Segment_2",
+      "group": "Pendulum/Test04",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "RepoIMU",
+      "record": "Pendulum/Pendulum_Test04_Trial3_Segment_3",
+      "group": "Pendulum/Test04",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "RepoIMU",
+      "record": "TStick/TStick_Test06_Trial1",
+      "group": "TStick/Test06",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "RepoIMU",
+      "record": "TStick/TStick_Test06_Trial2",
+      "group": "TStick/Test06",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "RepoIMU",
+      "record": "TStick/TStick_Test07_Trial1",
+      "group": "TStick/Test07",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "RepoIMU",
+      "record": "TStick/TStick_Test07_Trial2",
+      "group": "TStick/Test07",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "RepoIMU",
+      "record": "TStick/TStick_Test07_Trial3",
+      "group": "TStick/Test07",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "RepoIMU",
+      "record": "TStick/TStick_Test09_Trial1",
+      "group": "TStick/Test09",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "RepoIMU",
+      "record": "TStick/TStick_Test09_Trial2",
+      "group": "TStick/Test09",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "RepoIMU",
+      "record": "TStick/TStick_Test09_Trial3",
+      "group": "TStick/Test09",
+      "side": "sealed_current_campaign"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "dzw_F1_server_1_2",
+      "group": "dzw_F1_server_1",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "dzw_F1_server_13_2",
+      "group": "dzw_F1_server_13",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "dzw_F1_server_16_0",
+      "group": "dzw_F1_server_16",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "dzw_F1_server_16_3",
+      "group": "dzw_F1_server_16",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "dzw_F1_server_16_4",
+      "group": "dzw_F1_server_16",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "dzw_F1_server_19_6",
+      "group": "dzw_F1_server_19",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "dzw_F1_server_2_2",
+      "group": "dzw_F1_server_2",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "dzw_F1_server_21_2",
+      "group": "dzw_F1_server_21",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "dzw_F1_server_24_1",
+      "group": "dzw_F1_server_24",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "dzw_F1_server_4_3",
+      "group": "dzw_F1_server_4",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "dzw_F1_server_5_0",
+      "group": "dzw_F1_server_5",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "dzw_F1_server_5_1",
+      "group": "dzw_F1_server_5",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "dzw_F1_server_6_0",
+      "group": "dzw_F1_server_6",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "dzw_F1_server_7_1",
+      "group": "dzw_F1_server_7",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "fkn_F1_server_11_1",
+      "group": "fkn_F1_server_11",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "fkn_F1_server_12_5",
+      "group": "fkn_F1_server_12",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "fkn_F1_server_13_2",
+      "group": "fkn_F1_server_13",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "fkn_F1_server_14_8",
+      "group": "fkn_F1_server_14",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "fkn_F1_server_15_4",
+      "group": "fkn_F1_server_15",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "fkn_F1_server_15_6",
+      "group": "fkn_F1_server_15",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "fkn_F1_server_3_0",
+      "group": "fkn_F1_server_3",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "fkn_F1_server_3_6",
+      "group": "fkn_F1_server_3",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "fkn_F1_server_4_3",
+      "group": "fkn_F1_server_4",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "fkn_F1_server_5_1",
+      "group": "fkn_F1_server_5",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "fkn_F1_server_5_3",
+      "group": "fkn_F1_server_5",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "fkn_F1_server_6_1",
+      "group": "fkn_F1_server_6",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "fkn_F1_server_8_1",
+      "group": "fkn_F1_server_8",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "fkn_F1_server_9_3",
+      "group": "fkn_F1_server_9",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "gzt_F2_server_0_0",
+      "group": "gzt_F2_server_0",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "gzt_F2_server_10_0",
+      "group": "gzt_F2_server_10",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "gzt_F2_server_25_0",
+      "group": "gzt_F2_server_25",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "gzt_F2_server_26_1",
+      "group": "gzt_F2_server_26",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "gzt_F2_server_3_0",
+      "group": "gzt_F2_server_3",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "gzt_F2_server_32_0",
+      "group": "gzt_F2_server_32",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "gzt_F2_server_4_2",
+      "group": "gzt_F2_server_4",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "gzt_F2_server_9_0",
+      "group": "gzt_F2_server_9",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "hdf_F2_server_17_1",
+      "group": "hdf_F2_server_17",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "hdf_F2_server_2_0",
+      "group": "hdf_F2_server_2",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "hdf_F2_server_24_1",
+      "group": "hdf_F2_server_24",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "hjj_F2_server_10_1",
+      "group": "hjj_F2_server_10",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "hjj_F2_server_10_5",
+      "group": "hjj_F2_server_10",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "hjj_F2_server_12_0",
+      "group": "hjj_F2_server_12",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "hjj_F2_server_15_3",
+      "group": "hjj_F2_server_15",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "hjj_F2_server_17_6",
+      "group": "hjj_F2_server_17",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "hjj_F2_server_28_3",
+      "group": "hjj_F2_server_28",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "jz_B3_server_1_0",
+      "group": "jz_B3_server_1",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "jz_B3_server_15_1",
+      "group": "jz_B3_server_15",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "jz_B3_server_16_2",
+      "group": "jz_B3_server_16",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "jz_B3_server_19_4",
+      "group": "jz_B3_server_19",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "jz_B3_server_3_0",
+      "group": "jz_B3_server_3",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "jz_B3_server_3_5",
+      "group": "jz_B3_server_3",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "jz_B3_server_5_4",
+      "group": "jz_B3_server_5",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "jz_B3_server_9_1",
+      "group": "jz_B3_server_9",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "lcl_B1_server_1_0",
+      "group": "lcl_B1_server_1",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "lcl_B1_server_13_1",
+      "group": "lcl_B1_server_13",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "lcl_B1_server_13_6",
+      "group": "lcl_B1_server_13",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "lcl_B1_server_14_1",
+      "group": "lcl_B1_server_14",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "lcl_B1_server_14_5",
+      "group": "lcl_B1_server_14",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "lcl_B1_server_2_3",
+      "group": "lcl_B1_server_2",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "lcl_B1_server_2_4",
+      "group": "lcl_B1_server_2",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "lcl_B1_server_3_6",
+      "group": "lcl_B1_server_3",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "lcl_B1_server_7_0",
+      "group": "lcl_B1_server_7",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "lcl_B1_server_8_6",
+      "group": "lcl_B1_server_8",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "lry_F2_server_1_0",
+      "group": "lry_F2_server_1",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "lry_F2_server_1_2",
+      "group": "lry_F2_server_1",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "lry_F2_server_7_0",
+      "group": "lry_F2_server_7",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "lry_F2_server_7_1",
+      "group": "lry_F2_server_7",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "lry_F2_server_7_2",
+      "group": "lry_F2_server_7",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "lry_F2_server_9_0",
+      "group": "lry_F2_server_9",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "lry_F2_server_9_3",
+      "group": "lry_F2_server_9",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "lxr_F2_server_17_1",
+      "group": "lxr_F2_server_17",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "lxr_F2_server_17_4",
+      "group": "lxr_F2_server_17",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "lxr_F2_server_17_5",
+      "group": "lxr_F2_server_17",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "lxr_F2_server_3_1",
+      "group": "lxr_F2_server_3",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "lxr_F2_server_6_2",
+      "group": "lxr_F2_server_6",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "mbj_B3_server_0_1",
+      "group": "mbj_B3_server_0",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "mbj_B3_server_1_2",
+      "group": "mbj_B3_server_1",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "mbj_B3_server_14_0",
+      "group": "mbj_B3_server_14",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "mbj_B3_server_15_0",
+      "group": "mbj_B3_server_15",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "mbj_B3_server_15_5",
+      "group": "mbj_B3_server_15",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "mbj_B3_server_18_4",
+      "group": "mbj_B3_server_18",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "mbj_B3_server_23_4",
+      "group": "mbj_B3_server_23",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "mbj_B3_server_30_5",
+      "group": "mbj_B3_server_30",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "mbj_B3_server_30_6",
+      "group": "mbj_B3_server_30",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "mbj_B3_server_31_1",
+      "group": "mbj_B3_server_31",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "mbj_B3_server_32_2",
+      "group": "mbj_B3_server_32",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "mlp_B1_server_0_0",
+      "group": "mlp_B1_server_0",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "mlp_B1_server_10_3",
+      "group": "mlp_B1_server_10",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "mlp_B1_server_11_2",
+      "group": "mlp_B1_server_11",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "mlp_B1_server_11_5",
+      "group": "mlp_B1_server_11",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "mlp_B1_server_12_1",
+      "group": "mlp_B1_server_12",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "mlp_B1_server_12_2",
+      "group": "mlp_B1_server_12",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "mlp_B1_server_14_2",
+      "group": "mlp_B1_server_14",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "mlp_B1_server_17_2",
+      "group": "mlp_B1_server_17",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "mlp_B1_server_17_4",
+      "group": "mlp_B1_server_17",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "mlp_B1_server_18_0",
+      "group": "mlp_B1_server_18",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "mlp_B1_server_4_0",
+      "group": "mlp_B1_server_4",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "mlp_B1_server_8_1",
+      "group": "mlp_B1_server_8",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "mlp_B1_server_9_1",
+      "group": "mlp_B1_server_9",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "pyq_B1_server_12_0",
+      "group": "pyq_B1_server_12",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "pyq_B1_server_14_2",
+      "group": "pyq_B1_server_14",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "pyq_B1_server_15_3",
+      "group": "pyq_B1_server_15",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "pyq_B1_server_16_0",
+      "group": "pyq_B1_server_16",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "pyq_B1_server_20_6",
+      "group": "pyq_B1_server_20",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "pyq_B1_server_23_0",
+      "group": "pyq_B1_server_23",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "pyq_B1_server_23_6",
+      "group": "pyq_B1_server_23",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "qtq_F1_server_0_4",
+      "group": "qtq_F1_server_0",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "qtq_F1_server_0_6",
+      "group": "qtq_F1_server_0",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "qtq_F1_server_11_0",
+      "group": "qtq_F1_server_11",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "qtq_F1_server_14_1",
+      "group": "qtq_F1_server_14",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "qtq_F1_server_14_4",
+      "group": "qtq_F1_server_14",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "qtq_F1_server_17_1",
+      "group": "qtq_F1_server_17",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "qtq_F1_server_4_4",
+      "group": "qtq_F1_server_4",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "qtq_F1_server_5_1",
+      "group": "qtq_F1_server_5",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "qtq_F1_server_8_1",
+      "group": "qtq_F1_server_8",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "qtq_F1_server_9_4",
+      "group": "qtq_F1_server_9",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "qyq_F1_server_11_0",
+      "group": "qyq_F1_server_11",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "qyq_F1_server_11_2",
+      "group": "qyq_F1_server_11",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "qyq_F1_server_11_3",
+      "group": "qyq_F1_server_11",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "qyq_F1_server_4_2",
+      "group": "qyq_F1_server_4",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "qyq_F1_server_4_4",
+      "group": "qyq_F1_server_4",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "qyq_F1_server_4_6",
+      "group": "qyq_F1_server_4",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "qyq_F1_server_7_3",
+      "group": "qyq_F1_server_7",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "qyq_F1_server_9_1",
+      "group": "qyq_F1_server_9",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "sxq_F3_server_10_4",
+      "group": "sxq_F3_server_10",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "sxq_F3_server_4_0",
+      "group": "sxq_F3_server_4",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "sxq_F3_server_6_3",
+      "group": "sxq_F3_server_6",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "sxq_F3_server_7_0",
+      "group": "sxq_F3_server_7",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "sxq_F3_server_7_4",
+      "group": "sxq_F3_server_7",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "sxq_F3_server_8_0",
+      "group": "sxq_F3_server_8",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "syz_B3_server_1_4",
+      "group": "syz_B3_server_1",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "syz_B3_server_12_6",
+      "group": "syz_B3_server_12",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "syz_B3_server_14_1",
+      "group": "syz_B3_server_14",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "syz_B3_server_15_3",
+      "group": "syz_B3_server_15",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "syz_B3_server_16_1",
+      "group": "syz_B3_server_16",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "syz_B3_server_2_0",
+      "group": "syz_B3_server_2",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "syz_B3_server_7_1",
+      "group": "syz_B3_server_7",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "syz_B3_server_7_4",
+      "group": "syz_B3_server_7",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "szt_B3_server_14_1",
+      "group": "szt_B3_server_14",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "szt_B3_server_15_1",
+      "group": "szt_B3_server_15",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "szt_B3_server_17_2",
+      "group": "szt_B3_server_17",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "szt_B3_server_4_2",
+      "group": "szt_B3_server_4",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "szt_B3_server_4_3",
+      "group": "szt_B3_server_4",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "szt_B3_server_8_4",
+      "group": "szt_B3_server_8",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "wj_F3_server_0_1",
+      "group": "wj_F3_server_0",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "wj_F3_server_10_0",
+      "group": "wj_F3_server_10",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "wj_F3_server_11_1",
+      "group": "wj_F3_server_11",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "wj_F3_server_25_0",
+      "group": "wj_F3_server_25",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "wj_F3_server_29_3",
+      "group": "wj_F3_server_29",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "wj_F3_server_29_6",
+      "group": "wj_F3_server_29",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "wj_F3_server_3_1",
+      "group": "wj_F3_server_3",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "wj_F3_server_30_3",
+      "group": "wj_F3_server_30",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "wj_F3_server_33_3",
+      "group": "wj_F3_server_33",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "wj_F3_server_5_3",
+      "group": "wj_F3_server_5",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "wj_F3_server_5_4",
+      "group": "wj_F3_server_5",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "wj_F3_server_8_2",
+      "group": "wj_F3_server_8",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "wx_B3_server_1_3",
+      "group": "wx_B3_server_1",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "wx_B3_server_11_4",
+      "group": "wx_B3_server_11",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "wx_B3_server_11_5",
+      "group": "wx_B3_server_11",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "wx_B3_server_13_0",
+      "group": "wx_B3_server_13",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "wx_B3_server_15_2",
+      "group": "wx_B3_server_15",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "wx_B3_server_19_2",
+      "group": "wx_B3_server_19",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "wx_B3_server_3_4",
+      "group": "wx_B3_server_3",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "wx_B3_server_8_3",
+      "group": "wx_B3_server_8",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "wx_B3_server_9_3",
+      "group": "wx_B3_server_9",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "xzz_B1_server_0_4",
+      "group": "xzz_B1_server_0",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "xzz_B1_server_1_1",
+      "group": "xzz_B1_server_1",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "xzz_B1_server_16_5",
+      "group": "xzz_B1_server_16",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "xzz_B1_server_19_2",
+      "group": "xzz_B1_server_19",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "xzz_B1_server_19_7",
+      "group": "xzz_B1_server_19",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "xzz_B1_server_2_0",
+      "group": "xzz_B1_server_2",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "xzz_B1_server_4_3",
+      "group": "xzz_B1_server_4",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "xzz_B1_server_7_5",
+      "group": "xzz_B1_server_7",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "xzz_B1_server_8_1",
+      "group": "xzz_B1_server_8",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "xzz_B1_server_8_3",
+      "group": "xzz_B1_server_8",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "ysq_F3_server_0_1",
+      "group": "ysq_F3_server_0",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "ysq_F3_server_1_3",
+      "group": "ysq_F3_server_1",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "ysq_F3_server_1_4",
+      "group": "ysq_F3_server_1",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "ysq_F3_server_10_3",
+      "group": "ysq_F3_server_10",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "ysq_F3_server_12_5",
+      "group": "ysq_F3_server_12",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "ysq_F3_server_4_1",
+      "group": "ysq_F3_server_4",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "yyh_F3_server_0_1",
+      "group": "yyh_F3_server_0",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "yyh_F3_server_0_2",
+      "group": "yyh_F3_server_0",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "yyh_F3_server_11_1",
+      "group": "yyh_F3_server_11",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "yyh_F3_server_12_0",
+      "group": "yyh_F3_server_12",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "yyh_F3_server_12_5",
+      "group": "yyh_F3_server_12",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "yyh_F3_server_18_3",
+      "group": "yyh_F3_server_18",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "yyh_F3_server_19_2",
+      "group": "yyh_F3_server_19",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "yyh_F3_server_2_0",
+      "group": "yyh_F3_server_2",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "yyh_F3_server_2_5",
+      "group": "yyh_F3_server_2",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "yyh_F3_server_6_3",
+      "group": "yyh_F3_server_6",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "yyh_F3_server_9_4",
+      "group": "yyh_F3_server_9",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "zbb_F2_server_10_1",
+      "group": "zbb_F2_server_10",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "zbb_F2_server_10_3",
+      "group": "zbb_F2_server_10",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "zbb_F2_server_16_3",
+      "group": "zbb_F2_server_16",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "zbb_F2_server_18_1",
+      "group": "zbb_F2_server_18",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "zbb_F2_server_21_6",
+      "group": "zbb_F2_server_21",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "zbb_F2_server_24_2",
+      "group": "zbb_F2_server_24",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "zbb_F2_server_27_1",
+      "group": "zbb_F2_server_27",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "zxc_F1_server_1_0",
+      "group": "zxc_F1_server_1",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "zxc_F1_server_1_4",
+      "group": "zxc_F1_server_1",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "zxc_F1_server_10_0",
+      "group": "zxc_F1_server_10",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "zxc_F1_server_14_6",
+      "group": "zxc_F1_server_14",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "zxc_F1_server_17_1",
+      "group": "zxc_F1_server_17",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "zxc_F1_server_2_4",
+      "group": "zxc_F1_server_2",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "zxc_F1_server_7_1",
+      "group": "zxc_F1_server_7",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "zxr_F3_server_0_4",
+      "group": "zxr_F3_server_0",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "zzr_B1_server_1_0",
+      "group": "zzr_B1_server_1",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "zzr_B1_server_10_0",
+      "group": "zzr_B1_server_10",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "zzr_B1_server_10_2",
+      "group": "zzr_B1_server_10",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "zzr_B1_server_2_6",
+      "group": "zzr_B1_server_2",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "zzr_B1_server_4_4",
+      "group": "zzr_B1_server_4",
+      "side": "sealed_test"
+    },
+    {
+      "dataset": "YT_Server",
+      "record": "zzr_B1_server_7_0",
+      "group": "zzr_B1_server_7",
+      "side": "sealed_test"
+    }
+  ],
+  "full_coverage_additional_cases": [
+    {
+      "dataset": "BROAD",
+      "record": "01_undisturbed_slow_rotation_A",
+      "group": "undisturbed_slow_rotation",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "02_undisturbed_slow_rotation_B",
+      "group": "undisturbed_slow_rotation",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "03_undisturbed_slow_rotation_C",
+      "group": "undisturbed_slow_rotation",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "06_undisturbed_fast_rotation_A",
+      "group": "undisturbed_fast_rotation",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "07_undisturbed_fast_rotation_B",
+      "group": "undisturbed_fast_rotation",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "08_undisturbed_fast_rotation_with_breaks_A",
+      "group": "undisturbed_fast_rotation_with_breaks",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "09_undisturbed_fast_rotation_with_breaks_B",
+      "group": "undisturbed_fast_rotation_with_breaks",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "13_undisturbed_slow_translation_with_breaks_A",
+      "group": "undisturbed_slow_translation_with_breaks",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "14_undisturbed_slow_translation_with_breaks_B",
+      "group": "undisturbed_slow_translation_with_breaks",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "15_undisturbed_fast_translation_A",
+      "group": "undisturbed_fast_translation",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "16_undisturbed_fast_translation_B",
+      "group": "undisturbed_fast_translation",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "17_undisturbed_fast_translation_with_breaks_A",
+      "group": "undisturbed_fast_translation_with_breaks",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "18_undisturbed_fast_translation_with_breaks_B",
+      "group": "undisturbed_fast_translation_with_breaks",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "19_undisturbed_slow_combined_240s",
+      "group": "undisturbed_slow_combined",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "20_undisturbed_slow_combined_360s",
+      "group": "undisturbed_slow_combined",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "24_disturbed_tapping_A",
+      "group": "disturbed_tapping",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "25_disturbed_tapping_B",
+      "group": "disturbed_tapping",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "28_disturbed_stationary_magnet_A",
+      "group": "disturbed_stationary_magnet",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "29_disturbed_stationary_magnet_B",
+      "group": "disturbed_stationary_magnet",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "30_disturbed_stationary_magnet_C",
+      "group": "disturbed_stationary_magnet",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "31_disturbed_stationary_magnet_D",
+      "group": "disturbed_stationary_magnet",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "32_disturbed_attached_magnet_1cm",
+      "group": "disturbed_attached_magnet_1cm",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "33_disturbed_attached_magnet_2cm",
+      "group": "disturbed_attached_magnet_2cm",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "34_disturbed_attached_magnet_3cm",
+      "group": "disturbed_attached_magnet_3cm",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "35_disturbed_attached_magnet_4cm",
+      "group": "disturbed_attached_magnet_4cm",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "36_disturbed_attached_magnet_5cm",
+      "group": "disturbed_attached_magnet_5cm",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "BROAD",
+      "record": "39_disturbed_mixed",
+      "group": "disturbed_mixed",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "Sassari",
+      "record": "slow/XS1",
+      "group": "slow",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "Sassari",
+      "record": "slow/XS2",
+      "group": "slow",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "Sassari",
+      "record": "slow/AP1",
+      "group": "slow",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "Sassari",
+      "record": "slow/AP2",
+      "group": "slow",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "Sassari",
+      "record": "slow/SH1",
+      "group": "slow",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "Sassari",
+      "record": "slow/SH2",
+      "group": "slow",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "Sassari",
+      "record": "fast/XS1",
+      "group": "fast",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "Sassari",
+      "record": "fast/XS2",
+      "group": "fast",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "Sassari",
+      "record": "fast/AP1",
+      "group": "fast",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "Sassari",
+      "record": "fast/AP2",
+      "group": "fast",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "Sassari",
+      "record": "fast/SH1",
+      "group": "fast",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "Sassari",
+      "record": "fast/SH2",
+      "group": "fast",
+      "side": "historical_source_train"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R1-1",
+      "group": "R1",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R1-10",
+      "group": "R1",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R1-5",
+      "group": "R1",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R1-6",
+      "group": "R1",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R1-7",
+      "group": "R1",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R1-8",
+      "group": "R1",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R1-9",
+      "group": "R1",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R2-1",
+      "group": "R2",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R2-10",
+      "group": "R2",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R2-2",
+      "group": "R2",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R2-3",
+      "group": "R2",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R2-4",
+      "group": "R2",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R2-5",
+      "group": "R2",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R2-6",
+      "group": "R2",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R2-7",
+      "group": "R2",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R2-8",
+      "group": "R2",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R2-9",
+      "group": "R2",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R3-1",
+      "group": "R3",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R3-10",
+      "group": "R3",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R3-2",
+      "group": "R3",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R3-3",
+      "group": "R3",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R3-4",
+      "group": "R3",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R3-5",
+      "group": "R3",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R3-6",
+      "group": "R3",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R3-7",
+      "group": "R3",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R3-8",
+      "group": "R3",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R3-9",
+      "group": "R3",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R4-1",
+      "group": "R4",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R4-10",
+      "group": "R4",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R4-2",
+      "group": "R4",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R4-3",
+      "group": "R4",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R4-4",
+      "group": "R4",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R4-5",
+      "group": "R4",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R4-6",
+      "group": "R4",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R4-7",
+      "group": "R4",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R4-8",
+      "group": "R4",
+      "side": "development"
+    },
+    {
+      "dataset": "SHICE",
+      "record": "R4-9",
+      "group": "R4",
+      "side": "development"
+    }
+  ],
+  "secondary": "Same frozen front end and physical terms, with all learned tangents zero. No final result used to choose a model.",
+  "metric": "Native frames shared with FullVQF; record tilt-angle RMSE in degrees, arithmetic mean across records within domain."
+}

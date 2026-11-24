@@ -1,0 +1,466 @@
+{
+  "verified_at": "2026-11-24T06:56:49.950683+08:00",
+  "selected": "C038",
+  "authorized_window": {
+    "begin": "2026-11-23T22:56:31+08:00",
+    "end": "2026-11-24T06:56:31+08:00",
+    "seconds": 28800
+  },
+  "elapsed_since_authorization_seconds": 28818.950683,
+  "window_elapsed_at_verification": true,
+  "selection_lock_sha256": "db7cde52071e6c8a82071089952cc0bf7a2be997a68a3e28ab3712c640534808",
+  "historical_or_formal_primary_wins": 8,
+  "total_domains_better_than_default": 9,
+  "domains_better_than_all_three_fixed_VQF": [
+    "BROAD",
+    "Sassari"
+  ],
+  "domains": {
+    "BROAD": {
+      "scope": "primary",
+      "requested": 12,
+      "scored": 12,
+      "unscored": [],
+      "raw_deg": 0.645466706286679,
+      "model_deg": 0.6162507834474492,
+      "delta_deg": -0.029215922839229802,
+      "gain_percent": 4.526325301471667,
+      "records_improved": 5,
+      "scored_frames": 542005
+    },
+    "IMU-Array": {
+      "scope": "primary",
+      "requested": 16,
+      "scored": 16,
+      "unscored": [],
+      "raw_deg": 3.8859689480049333,
+      "model_deg": 3.65829274039611,
+      "delta_deg": -0.22767620760882323,
+      "gain_percent": 5.858930183312783,
+      "records_improved": 16,
+      "scored_frames": 8925815
+    },
+    "OxIOD": {
+      "scope": "primary",
+      "requested": 68,
+      "scored": 68,
+      "unscored": [],
+      "raw_deg": 2.6230708497748814,
+      "model_deg": 2.556219454110593,
+      "delta_deg": -0.06685139566428822,
+      "gain_percent": 2.5485928323295437,
+      "records_improved": 58,
+      "scored_frames": 1898438
+    },
+    "RepoIMU": {
+      "scope": "primary",
+      "requested": 26,
+      "scored": 26,
+      "unscored": [],
+      "raw_deg": 1.6655847138597333,
+      "model_deg": 1.5869823629445459,
+      "delta_deg": -0.07860235091518741,
+      "gain_percent": 4.7192046289280976,
+      "records_improved": 18,
+      "scored_frames": 79665
+    },
+    "SHICE": {
+      "scope": "primary",
+      "requested": 20,
+      "scored": 20,
+      "unscored": [],
+      "raw_deg": 2.059622062886149,
+      "model_deg": 1.9203010276052281,
+      "delta_deg": -0.13932103528092066,
+      "gain_percent": 6.764398080184186,
+      "records_improved": 20,
+      "scored_frames": 4610054
+    },
+    "Sassari": {
+      "scope": "primary",
+      "requested": 6,
+      "scored": 6,
+      "unscored": [],
+      "raw_deg": 1.5345850062058028,
+      "model_deg": 1.4552716587829504,
+      "delta_deg": -0.07931334742285245,
+      "gain_percent": 5.168390613886642,
+      "records_improved": 5,
+      "scored_frames": 121572
+    },
+    "TUM-VI": {
+      "scope": "primary",
+      "requested": 4,
+      "scored": 4,
+      "unscored": [],
+      "raw_deg": 1.166390904783182,
+      "model_deg": 1.1161779630654414,
+      "delta_deg": -0.0502129417177406,
+      "gain_percent": 4.304983990515132,
+      "records_improved": 3,
+      "scored_frames": 92556
+    },
+    "YT_Server": {
+      "scope": "primary",
+      "requested": 213,
+      "scored": 213,
+      "unscored": [],
+      "raw_deg": 2.2507931261723737,
+      "model_deg": 2.2075085084130004,
+      "delta_deg": -0.04328461775937331,
+      "gain_percent": 1.9230829015806417,
+      "records_improved": 177,
+      "scored_frames": 6814722
+    },
+    "EuRoC": {
+      "scope": "supplemental",
+      "requested": 3,
+      "scored": 3,
+      "unscored": [],
+      "raw_deg": 5.439742809760211,
+      "model_deg": 6.070710155445602,
+      "delta_deg": 0.6309673456853915,
+      "gain_percent": -11.59921282589471,
+      "records_improved": 0,
+      "scored_frames": 63204
+    },
+    "RIDI": {
+      "scope": "supplemental",
+      "requested": 25,
+      "scored": 23,
+      "unscored": [
+        {
+          "record": "hang_leg_new3",
+          "status": "source_unavailable",
+          "detail": "{'dataset': 'RIDI', 'record': 'hang_leg_new3', 'exception': 'KeyError(\"There is no item named \\'data_publish_v2/hang_leg_new3/acce.txt\\' in the archive\")'}"
+        },
+        {
+          "record": "huayi_handheld_test1",
+          "status": "source_unavailable",
+          "detail": "{'dataset': 'RIDI', 'record': 'huayi_handheld_test1', 'exception': 'KeyError(\"There is no item named \\'data_publish_v2/huayi_handheld_test1/acce.txt\\' in the archive\")'}"
+        }
+      ],
+      "raw_deg": 1.4340556868148338,
+      "model_deg": 1.3414203500051074,
+      "delta_deg": -0.09263533680972635,
+      "gain_percent": 6.459675008540133,
+      "records_improved": 23,
+      "scored_frames": 409339
+    },
+    "DAVIS": {
+      "scope": "supplemental",
+      "requested": 3,
+      "scored": 3,
+      "unscored": [],
+      "raw_deg": 4.259039699875809,
+      "model_deg": 4.771590238921909,
+      "delta_deg": 0.5125505390460994,
+      "gain_percent": -12.0344156233398,
+      "records_improved": 0,
+      "scored_frames": 147649
+    },
+    "PennCOSYVIO": {
+      "scope": "supplemental",
+      "requested": 2,
+      "scored": 2,
+      "unscored": [],
+      "raw_deg": 1.6838505489919604,
+      "model_deg": 1.7578835094895335,
+      "delta_deg": 0.07403296049757313,
+      "gain_percent": -4.396646753590638,
+      "records_improved": 0,
+      "scored_frames": 49665
+    }
+  },
+  "requested_across_twelve": 398,
+  "scored_across_twelve": 396,
+  "other_full_coverage_rows": 76,
+  "development_named_batches": 38,
+  "distinct_configs": 45,
+  "training_sources": {
+    "BROAD": 27,
+    "PennCOSYVIO": 2,
+    "RIDI": 4,
+    "Sassari": 12,
+    "YT_Server": 96
+  },
+  "own_records_in_fitting": 0,
+  "matched_final_raw_anchors": 14,
+  "matched_supplemental_native_records": 31,
+  "main_independent_implementation_max_gap_deg": 3.3693432266446166e-08,
+  "selection_time": "2026-11-24T05:35:54.414780+08:00",
+  "all_independent_replays": 472,
+  "all_native_rows": 33311019,
+  "verified_coordinator_batch_messages": 38,
+  "working_local_markdown_links": {
+    "REPORT.md": 73,
+    "SPLITS.md": 32,
+    "README.md": 65
+  },
+  "verified_report_evidence_queries": 62,
+  "frozen_historical_models": {
+    "wins_by_domain": {
+      "full_vqf_deg": 9,
+      "transfer_mamba_deg": 12,
+      "strict_tcn_deg": 9
+    },
+    "scored_native_rows": 396,
+    "native_anchor_count": 18,
+    "worker_status_counts": {
+      "scored": 377,
+      "batch8_score_mismatch": 19,
+      "source_unavailable": 2
+    },
+    "original_archive_max_gap_deg": {
+      "full_vqf": 6.684994779959652e-09,
+      "transfer_mamba": 6.833368093595027e-09,
+      "strict_tcn": 0.00012236498977014065
+    },
+    "original_archive_rows_passing": 1
+  },
+  "shice_clock_study": {
+    "reconstructed_masks": 20,
+    "records_per_offset": 20,
+    "raw_anchor_comparisons": 30,
+    "raw_anchor_max_gap_deg": 1.1331798388525272e-08
+  },
+  "live_self_raw_and_mask_files": {
+    "files": 40,
+    "records": 20,
+    "bytes": 3352447319,
+    "checksums": {
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\R5_aligned_formal\\R5-1.csv": {
+        "bytes": 199296232,
+        "sha256": "b91e981168339bc94ed9a90a52707efb1e99566acba85c36de32681a428caec0"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\Label_quality_audit_20261116\\R5-1\\screening_masks.npz": {
+        "bytes": 4960141,
+        "sha256": "c5d4b7a124e6a3cf8754fbd8b57ba47296508036b8eb0ee89f3e5471331db393"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\R5_aligned_formal\\R5-10.csv": {
+        "bytes": 110013157,
+        "sha256": "c172dfa5283a5eff4d98e40b5eeed496713841a69c5589b3c29f5a21d378a48e"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\Label_quality_audit_20261116\\R5-10\\screening_masks.npz": {
+        "bytes": 3179912,
+        "sha256": "ec6851c1a5922d25cbd4873ae87c70fe1acdd2f235282bec366c4389d2449a3e"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\R5_aligned_formal\\R5-2.csv": {
+        "bytes": 183865893,
+        "sha256": "abf0597e75b8c59f4b41f53e74dfcebc838b81bdd0e169b1fd5414d1de9e4292"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\Label_quality_audit_20261116\\R5-2\\screening_masks.npz": {
+        "bytes": 4600130,
+        "sha256": "93105b7bcc3266926a80ad99d88a764980c0e238701454ec7894a505db393e6c"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\R5_aligned_formal\\R5-3.csv": {
+        "bytes": 233839410,
+        "sha256": "228c2595fb1fb170247f47f55c12e3c82160a68cbff9e4dc58fdb1c7ae9f43e3"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\Label_quality_audit_20261116\\R5-3\\screening_masks.npz": {
+        "bytes": 5911978,
+        "sha256": "79c97b067a446f38f071a37e330b3936c72ccba454cad2c34afb652d62e11e84"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\R5_aligned_formal\\R5-4.csv": {
+        "bytes": 214965895,
+        "sha256": "c3f422a0474dee886aab8c04a85de44d5474f1b71f0e052d18a82ed1a97aa586"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\Label_quality_audit_20261116\\R5-4\\screening_masks.npz": {
+        "bytes": 5623861,
+        "sha256": "27e43d0a38f45bb31e36107d16ed50e7b1dde8edf68486d6eb6c6fadff3daf51"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\R5_aligned_formal\\R5-5.csv": {
+        "bytes": 237901596,
+        "sha256": "f7694adcfad9b6d5a74e91d4ceccc3259db226864cabcb3d190f28c9c6cf9238"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\Label_quality_audit_20261116\\R5-5\\screening_masks.npz": {
+        "bytes": 6083696,
+        "sha256": "bbfbab769a37c1e0dcf2cd1d092ba354113d81a12776e373ca78a4443df1a542"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\R5_aligned_formal\\R5-6.csv": {
+        "bytes": 127121681,
+        "sha256": "c40ba5bb22cb220789f5079e0e248d279acd33cd0076de9ca80abecf41990694"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\Label_quality_audit_20261116\\R5-6\\screening_masks.npz": {
+        "bytes": 3260708,
+        "sha256": "160719b7cd6b248a02536c12e2cb0aea018e1435482ab0b59f2449f5d5d04b41"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\R5_aligned_formal\\R5-7.csv": {
+        "bytes": 91783322,
+        "sha256": "61061becb83dd0b95f8c181474cafd628a5e5f5060f41730202ba7c6cd1d04d4"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\Label_quality_audit_20261116\\R5-7\\screening_masks.npz": {
+        "bytes": 2640437,
+        "sha256": "d61f3514ce44d1c700972727db39ee98ed9447666c17fe825b9f6ea4cc51922d"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\R5_aligned_formal\\R5-8.csv": {
+        "bytes": 116122568,
+        "sha256": "4dcb5ea628ef435a071cabeaeffb44e811e57e866b60606989e99dc996b6e31b"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\Label_quality_audit_20261116\\R5-8\\screening_masks.npz": {
+        "bytes": 3369552,
+        "sha256": "236ad257e18d4e60af42a8893db899294ef81e0ed17430f6d2e2a47ff8aea0e0"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\R5_aligned_formal\\R5-9.csv": {
+        "bytes": 123745527,
+        "sha256": "91353ae83a778968e5258e1791a29664d5a202013a5a75c2537d02ccd15ad7bd"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\Label_quality_audit_20261116\\R5-9\\screening_masks.npz": {
+        "bytes": 3136204,
+        "sha256": "bf0400cf61601764e1a3721a53d75ee8442f7170d6a522a17b1433aaa76128f5"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\R6_aligned_formal\\R6-1.csv": {
+        "bytes": 198590907,
+        "sha256": "3aead5df8ae12c858452c4f52e47775848906fe6c2cbe43c5abb5b7d3a731de2"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\Label_quality_audit_20261116\\R6-1\\screening_masks.npz": {
+        "bytes": 4949132,
+        "sha256": "e66f70ad668bfacd93838999136544c9beb3a5f8e72a640c9336195f53baecf9"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\R6_aligned_formal\\R6-10.csv": {
+        "bytes": 109357854,
+        "sha256": "f76cfa68d8e14161b7d109cab9d2855847c8732aa7aaf072aa04796a63b5c038"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\Label_quality_audit_20261116\\R6-10\\screening_masks.npz": {
+        "bytes": 2955840,
+        "sha256": "54dee48a624f2958a90ee787faab3945f356d11e753d5ddcd6bf21962fe78bbb"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\R6_aligned_formal\\R6-2.csv": {
+        "bytes": 181993621,
+        "sha256": "35d0537f93523764b20c7bea71e0247dc20a3e3b0585bb7da600dc2c3e36598d"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\Label_quality_audit_20261116\\R6-2\\screening_masks.npz": {
+        "bytes": 4569665,
+        "sha256": "e7e2446e9f911251219b5c1e156d9b799bd59b571f0aca58ed4d9d23f9656b8a"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\R6_aligned_formal\\R6-3.csv": {
+        "bytes": 231287034,
+        "sha256": "72251d1c08dd7269488cc9ee785816dec9205a6ac0205cf3ce11a245e0cda4db"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\Label_quality_audit_20261116\\R6-3\\screening_masks.npz": {
+        "bytes": 5741524,
+        "sha256": "51c11ff47a6169bcd3aa6f8e73a7d112109ab2b7fe3dfa171e21065d91927df4"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\R6_aligned_formal\\R6-4.csv": {
+        "bytes": 214631352,
+        "sha256": "05c790fc84882cc716e1c312e9e124b34d223bdc29b58180dd2b4b06147f86d9"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\Label_quality_audit_20261116\\R6-4\\screening_masks.npz": {
+        "bytes": 5675163,
+        "sha256": "707e85cbf8984a81da838f13149eed40890cc6592e3f40d5500aaff3a729051c"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\R6_aligned_formal\\R6-5.csv": {
+        "bytes": 236992803,
+        "sha256": "de70986c06834bd986d300ef8fdee711a22350661cd8f7a17633b63ab4e226e8"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\Label_quality_audit_20261116\\R6-5\\screening_masks.npz": {
+        "bytes": 6039785,
+        "sha256": "67dfe4889bcc2d43719b251a187cbe61a59fdae8fe20548966f79090902ceb8c"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\R6_aligned_formal\\R6-6.csv": {
+        "bytes": 126093914,
+        "sha256": "09037be45cc010fbba29b95ece894bee5a1870c12b245c8927f6cb7ffc854124"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\Label_quality_audit_20261116\\R6-6\\screening_masks.npz": {
+        "bytes": 3323338,
+        "sha256": "9debfc2b6d5624034ae9e1948e3b846cc0858127d60356cbddba036bb9a1a929"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\R6_aligned_formal\\R6-7.csv": {
+        "bytes": 91368292,
+        "sha256": "08595e85e731d46357c999eb3d05b4a4edc65b1f0d3d882bc3653159aeb50613"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\Label_quality_audit_20261116\\R6-7\\screening_masks.npz": {
+        "bytes": 2646405,
+        "sha256": "42879189645f89c0081dc8e2def270629a6b47c5b5a1d2b7cc5f709483df197f"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\R6_aligned_formal\\R6-8.csv": {
+        "bytes": 115508433,
+        "sha256": "013dbe859a9583a1d718a2b7c3691ba013c5f1270e8a512e96afff149dec603a"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\Label_quality_audit_20261116\\R6-8\\screening_masks.npz": {
+        "bytes": 3007301,
+        "sha256": "165c529a26e0a0a196baac67af0d00852c2a557c5616cef69ec13c69ae76436a"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\R6_aligned_formal\\R6-9.csv": {
+        "bytes": 123078671,
+        "sha256": "65b347f7916f9cc61684e3a52ae4ddb1b1e83b53a54f1a062395fd5c8791d999"
+      },
+      "E:\\数据集\\IMU_dynamic_data_SHICE\\Label_quality_audit_20261116\\R6-9\\screening_masks.npz": {
+        "bytes": 3214385,
+        "sha256": "a5bd446008f5cafc34908374eb7d46fe7aeb066e5ec62123fa0dc04d56f58ea9"
+      }
+    }
+  },
+  "max_two_implementation_difference_deg": 1.732520980013419e-07,
+  "last_science_at": "2026-11-24T06:34:02.074034+08:00",
+  "guidance_audited_at": "2026-11-24T06:38:47.507998+08:00",
+  "html_checked_utc": "2026-11-23T22:45:31.583144+00:00",
+  "offline_delivery": {
+    "verified_at": "2026-11-24T06:45:35.463222+08:00",
+    "source_render_sha256": "0fd95ec4396bae4971ece70739e3446b9f9a4a81561ee995c69b80cf3e11c552",
+    "html_sha256": "2b0d834275d32b465af6ae9ac53dfe26c9196252b842cfe1eea371cb5a30f751",
+    "bytes": 2607666,
+    "viewports": {
+      "390": {
+        "offline": true,
+        "network_requests": 0,
+        "page_errors": [],
+        "tables": 99,
+        "gain_chart_domains": 12
+      },
+      "1280": {
+        "offline": true,
+        "network_requests": 0,
+        "page_errors": [],
+        "tables": 99,
+        "gain_chart_domains": 12
+      }
+    }
+  },
+  "qa": {
+    "1280": {
+      "tables": 99,
+      "verified_narratives": 110,
+      "count_rows": 32,
+      "paired_comparison_rows": 5,
+      "verified_section_links": 17,
+      "gain_chart_marks": 12,
+      "document_overflow": false,
+      "page_errors": []
+    },
+    "390": {
+      "tables": 99,
+      "verified_narratives": 110,
+      "count_rows": 32,
+      "paired_comparison_rows": 5,
+      "verified_section_links": 17,
+      "gain_chart_marks": 12,
+      "document_overflow": false,
+      "page_errors": []
+    }
+  },
+  "hashes": {
+    "all-datasets-8h-20261123/final/main.csv": "9ba83ff85b21f177584d58c3c03988fbab748f7e09703f377cb3e0a396e2d68c",
+    "all-datasets-8h-20261123/final/additional.csv": "5cfa2d0fd842911baec0dadc2c90a7bba8fad3edbbec96cc305d1012fe43a3ca",
+    "all-datasets-8h-20261123/final/transfer.csv": "f39097eeb84b11d54e677da67ea5f91300455e5ef856d3ef611a0185949b92a5",
+    "all-datasets-8h-20261123/review/final-supplemental/sequences.csv": "a360c8a37918d8f507edc82e732eddbf83f0b1d06f028d984c0dcaa574ef488e",
+    "all-datasets-8h-20261123/review/final-davis/sequences.csv": "0ad349bb0cd1430023161536cf59aa92dfb5992eed41084aff37d37a1340c39f",
+    "all-datasets-8h-20261123/review/final-penn/sequences.csv": "c1895c315f437d7ff4e3add9c0ad51826caabb8e69e119d3a827081e57dfc214",
+    "all-datasets-8h-20261123/final/historical-models/main.csv": "efe16466a5d04dec2422b69c4fe242f4883bfb33b4a341add9aa7d27d1ff1541",
+    "all-datasets-8h-20261123/final/historical-models/transfer.csv": "5c50d542ce777b97bef9c7af9a512a8e2724b0442a68331396548d4e79ef4991",
+    "all-datasets-8h-20261123/final/historical-models/tcn-backend-attribution/summary.json": "aa01952ab9445c7bba7d4df3974e92280e9a1d12243e2c71407f7d20fec17c97",
+    "all-datasets-8h-20261123/review/historical-models-verified.json": "c92f1f4f5f745a29b252776d4f88690043ac72c7816cf384148ee63c80bcf61c",
+    "all-datasets-8h-20261123/review/previous-model-native-anchors.json": "ae6aabb575bd0f9fe3bc02b432cfcf729b326513f4a9dc00b2fda100eab89177",
+    "all-datasets-8h-20261123/final/shice-clock-sensitivity/sequences.csv": "2d81c6436ef229bbb400ae57bdbed1dd66023e404b65af73dd2b299ba6a7f20a",
+    "all-datasets-8h-20261123/review/shice-clock-verified.json": "5a3b8a2b2ead6277e3a888e11ca2aa7b15830ba9b387bd5415f86a3b0ca0a8da",
+    "all-datasets-8h-20261123/review/REPORT.md": "620e9fa979d32b0b301f37f9a180187c168b55c74d1cac594ddbe69d5d3002ca",
+    "all-datasets-8h-20261123/review/SPLITS.md": "db87f30791b3ed9b517e71d2a47a884891ac7566e4e6925e233ea51e71dae677",
+    "all-datasets-8h-20261123/review/guidance-receipts.csv": "f9fc1c5ec6a2047efb98b813fc2493e515a0db6d810f41ae15e92d5d65bf5709",
+    "all-datasets-8h-20261123/review/guidance-verification.json": "7ee9fe97100bda296e943b0204a25fc279406d178e7b727e056f39ddc741dbed",
+    "all-datasets-8h-20261123/review/final-domain-gains.png": "efd661b2079cddb694e1521eee0490521e29b88fc8e1805d954034752583d552",
+    "all-datasets-8h-20261123/review/REPORT.html": "2b0d834275d32b465af6ae9ac53dfe26c9196252b842cfe1eea371cb5a30f751",
+    "all-datasets-8h-20261123/review/published-report-qa.json": "2053e1d19981a2858efa3cf1b9387d75581368d2915baa06651fbd5e8f75be1e",
+    "overnight-20261122/review/report-src/dist/index.html": "2b0d834275d32b465af6ae9ac53dfe26c9196252b842cfe1eea371cb5a30f751",
+    "overnight-20261122/review/render_check.json": "0fd95ec4396bae4971ece70739e3446b9f9a4a81561ee995c69b80cf3e11c552"
+  }
+}

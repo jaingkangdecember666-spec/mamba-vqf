@@ -1,0 +1,9 @@
+{
+  "c023_steps": 160,
+  "c035_iterations": 67,
+  "external_source_records": 141,
+  "external_slots": 15680,
+  "parameter_max_abs_difference": 7.049916206369744e-15,
+  "prediction_max_angle_deg": 6.590948865441348e-14,
+  "checkpoint_sha256": "ad1e70ac04b465a50dffea195e1f258e38cbf6ab86b1d7d8d825c5eb337c3499"
+}

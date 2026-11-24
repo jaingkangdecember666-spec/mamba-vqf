@@ -1,0 +1,93 @@
+{
+  "campaign": "2026-11-23 FZR-MiniPC",
+  "selection": "C038",
+  "frozen_inference": {
+    "front_end": "causal_sphere",
+    "heads": [
+      {
+        "name": "C003_debiased_b6_gain_025",
+        "weights": "weights/mamba-intrinsic-b6.pt",
+        "sha256": "42cd98956346659f117ef79f474f16fc647c9eae3b28237421c1ea77091be34b",
+        "gain": 0.25,
+        "gate": "always",
+        "kind": "mamba_v1",
+        "fraction": 0.5
+      },
+      {
+        "name": "C013_seed_C006",
+        "weights": "weights/c013-readout.pt",
+        "sha256": "3f4f8bf55a63ead1b2fd93977169a3d4d54567ab8cdafd3dfd628f3e7c674519",
+        "gain": 0.25,
+        "gate": "rest_off",
+        "kind": "mamba_v1",
+        "fraction": 0.5
+      }
+    ],
+    "additions": [
+      {
+        "name": "C020_C020",
+        "weights": "weights/c020-temporal-mamba.pt",
+        "sha256": "17ec7d6645ae59538ed1c8e9bd4cddc8028a79507b0fb3f68ca1485d3cd9e518",
+        "gain": 0.125,
+        "gate": "rest_off",
+        "kind": "trained_mamba_temporal_readout"
+      }
+    ],
+    "window_blocks": 64,
+    "block_seconds": 0.01,
+    "release_seconds": 0.1,
+    "vertical_in_estimator_frame": [
+      0,
+      0,
+      1
+    ],
+    "stable_force": {
+      "tau_s": 0.25,
+      "spread_deg": 3.0,
+      "cap_deg": 6.0,
+      "gain": 0.0895442241637263,
+      "gate": "stable_nonrest"
+    },
+    "response_router": {
+      "name": "C038_C038",
+      "weights": "weights/c038-router.pt",
+      "sha256": "7ea7afee47590c8d155006be3647e21a08271ace3eaef158e73750855922d59b",
+      "gain": 1.0,
+      "gate": "valid_nonrest",
+      "kind": "history_softmax",
+      "backbone": "C003_debiased_b6_gain_025",
+      "prior_gain": 0.13577455005402334
+    }
+  },
+  "c023_optimizer": {
+    "kind": "AdamW",
+    "lr": 0.01,
+    "weight_decay": 0.01,
+    "clip_global_norm": 2.0,
+    "steps": 160,
+    "batch_size": 96
+  },
+  "c023_chord_denominators": {
+    "BROAD": 0.0001853846865916264,
+    "Sassari": 0.0010711693363769643,
+    "YT_Server": 0.0016550835451029406,
+    "RIDI": 0.0005575061324429063
+  },
+  "c035_solver_options": {
+    "ftol": 1e-11,
+    "maxiter": 200,
+    "disp": false
+  },
+  "c035_radius": 0.4693045062626217,
+  "training_slots": 15680,
+  "external_records": 141,
+  "original_lock_sha256": "db7cde52071e6c8a82071089952cc0bf7a2be997a68a3e28ab3712c640534808",
+  "sha256": {
+    "weights/c038-router.pt": "7ea7afee47590c8d155006be3647e21a08271ace3eaef158e73750855922d59b",
+    "weights/mamba-intrinsic-b6.pt": "42cd98956346659f117ef79f474f16fc647c9eae3b28237421c1ea77091be34b",
+    "weights/c013-readout.pt": "3f4f8bf55a63ead1b2fd93977169a3d4d54567ab8cdafd3dfd628f3e7c674519",
+    "weights/c020-temporal-mamba.pt": "17ec7d6645ae59538ed1c8e9bd4cddc8028a79507b0fb3f68ca1485d3cd9e518",
+    "weights/strict-tcn.pt": "08762bb0c5893f51697aaf1f7f6b9f2597916e22fc0ae921b6f52d14660fd486",
+    "external-training.npz": "290c4f4858dee184396b1da7e4cab423d9b6a20ac10bfd1733005b4382316829"
+  }
+}
